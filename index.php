@@ -59,7 +59,7 @@
   <form method="post" action="./users/insert.php" onsubmit="return validateForm();">
   <fieldset>
     <?php if (isset($_SESSION['message'])): ?>
-              <div class="alert-danger alert"> <?= $_SESSION['message']; unset($_SESSION['message'] ); ?>  </div>
+              <div class="alert-success alert text-capitalize"> <?= $_SESSION['message']; unset($_SESSION['message'] );  ?>  </div>
     <?php endif; ?>
     <legend>Register For EMS</legend>
  
@@ -86,7 +86,9 @@
       <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
       <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
     </div> -->
-    <fieldset class="form-group">
+    <div class="row">
+       <div class="col-md-6">
+          <fieldset class="form-group">
       <legend>Your department</legend>
       <div class="form-check">
         <label class="form-check-label">
@@ -107,6 +109,27 @@
         </label>
       </div>
     </fieldset>
+       </div>
+
+       <div class="col-md-6">
+          <fieldset class="form-group">
+      <legend>Your Role</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="role" id="role1" value="admin">
+      Register as admin
+        </label>
+      </div>
+      <div class="form-check">
+      <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="role" id="role2" value="employee" checked="">
+          Register as employee
+        </label>
+      </div>
+       
+    </fieldset>
+       </div>
+    </div>
     <button type="reset" class="btn btn-danger">Cancel</button>
     <button type="submit" class="btn btn-primary" name="register"> Register Now</button>
   </fieldset>

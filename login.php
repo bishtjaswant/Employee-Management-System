@@ -56,7 +56,7 @@
 
 <!-- register form start -->
 <div class="col-md-6 offset-3">
-  <form method="post" action="./users/login.php" onsubmit="return validateForm();">
+  <form method="post" action="./users/login.php" onsubmit="return validateForm();" autocomplete="on">
   <fieldset>
     <?php if (isset($_SESSION['message'])): ?>
               <div class="alert-danger alert">
