@@ -29,10 +29,10 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
-  
       <li class="nav-item">
-        <a class="nav-link" href="./login.php">Login</a>
+        <a class="nav-link" href="./index.php">Register</a>
       </li>
+       
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
       </li>
@@ -56,19 +56,15 @@
 
 <!-- register form start -->
 <div class="col-md-6 offset-3">
-  <form method="post" action="./users/insert.php" onsubmit="return validateForm();">
+  <form method="post" action="./users/login.php" onsubmit="return validateForm();">
   <fieldset>
     <?php if (isset($_SESSION['message'])): ?>
-              <div class="alert-danger alert"> <?= $_SESSION['message']; unset($_SESSION['message'] ); ?>  </div>
+              <div class="alert-danger alert">
+               <?= $_SESSION['message']; unset($_SESSION['message'] ); ?>  </div>
     <?php endif; ?>
-    <legend>Register For EMS</legend>
+    <legend>Login For EMS</legend>
  
-    <div class="form-group">
-      <label for="name">Your name</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Yyour name">
-      <span id="name_error">  </span>
-    </div>
-
+    
     <div class="form-group">
       <label for="email">Email address</label>
       <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email">
@@ -80,35 +76,8 @@
       <small id="pass_error">  </small>
 
     </div>
-    <!-- 
-    <div class="form-group">
-      <label for="exampleInputFile">File input</label>
-      <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-      <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-    </div> -->
-    <fieldset class="form-group">
-      <legend>Your department</legend>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="department" id="department1" value="web development" checked="">
-      Web development
-        </label>
-      </div>
-      <div class="form-check">
-      <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="department" id="department2" value="android development">
-          Android development
-        </label>
-      </div>
-      <div class="form-check disabled">
-      <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="department" id="department3" value="SEO" disabled="">
-          SEO
-        </label>
-      </div>
-    </fieldset>
-    <button type="reset" class="btn btn-danger">Cancel</button>
-    <button type="submit" class="btn btn-primary" name="register"> Register Now</button>
+  
+    <button type="submit" class="btn btn-primary" name="login"> Login </button>
   </fieldset>
 </form>  <!-- end register form -->
  </div> 
