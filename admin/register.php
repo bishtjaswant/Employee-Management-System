@@ -77,7 +77,7 @@
       </div>
       <div class="form-check disabled">
       <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="department" id="department3" value="SEO" disabled="">
+          <input type="radio" class="form-check-input" name="department" id="department3" value="SEO" >
           SEO
         </label>
       </div>

@@ -28,6 +28,9 @@ require_once '../config/db.php';
 <!-- container start-->
 <div class="container">
       
+<?php if (isset($_SESSION['message'])): ?>
+              <div class="alert-success alert text-capitalize"> <?= $_SESSION['message']; unset($_SESSION['message'] );  ?>  </div>
+    <?php endif; ?>
 
 <!-- table -->
 
@@ -69,7 +72,7 @@ require_once '../config/db.php';
                           <td><?= $data['role']; ?></td>
                           <td>
                             <a href="edit-user.php?id=<?= $data['id'];?>">edit</a>|
-                            <a href="dashboard.php?id=<?= $data['id'];?>">delete</a>
+                            <a href="dashboard.php?del_id=<?= $data['id'];?>">delete</a>
                           </td>
                         </tr>
               <?php
@@ -98,3 +101,23 @@ require_once '../config/db.php';
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
   </body>
 </html>
+<?php 
+// code for delete user
+
+if (isset($_GET['del_id'])) {
+      // create connection
+  $sql = "DELETE FROM `users` WHERE `users`.`id` = :u_del_id ";
+  $stmt =  $conn->prepare($sql);
+  $stmt->execute([':u_del_id'=> $_GET['del_id']]);
+      if( is_object($stmt) ) {
+                  $_SESSION['message']="succcessfully deleted";
+                  
+                   echo '<script>
+                      window.location.assign(" http://localhost/EMS/admin/dashboard.php")
+                   </script>';
+            
+      }
+} 
+
+
+ ?>
