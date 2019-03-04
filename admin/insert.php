@@ -24,13 +24,13 @@ if ( isset($_REQUEST['register'])) {
 		$sth->bindParam(':role', $role, PDO::PARAM_STR);
 		$sth->execute();
 		if ($sth->rowCount() > 0) {
-			$_SESSION['message']="employee registered as ". $role;
+			$_SESSION['message']="$name  registered as $role";
 			session_regenerate_id(true);
-			header('Location:  http://localhost/EMS/insert.php');
+			header('Location:  http://localhost/EMS/admin/register.php');
 		} else {
 		   $_SESSION['message']="failed try  again latrer";
 		   session_regenerate_id(true);
-			header('Location:  http://localhost/EMS/insert.php');
+			header('Location:  http://localhost/EMS/admin/register.php');
 		}
 		
   }

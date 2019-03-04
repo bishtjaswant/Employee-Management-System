@@ -1,4 +1,6 @@
-<?php include '../authentication/auth.php'; ?>
+<?php include_once '../authentication/auth.php';
+require_once '../config/db.php';
+ ?>
 
 <!doctype html>
 <html lang="en">
@@ -25,10 +27,70 @@
 
 <!-- container start-->
 <div class="container">
+      
 
- 
+<!-- table -->
 
-</div><!-- containser end -->
+<h1>User Records </h1>
+<table class="table table-hover" style="margin-top: 19px;">
+  <thead>
+    <tr>
+      <th scope="col">S NO </th>
+      <th scope="col">NAME</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">DEPARTMENT</th>
+      <th scope="col">ROLE ASSIGN</th>
+      <th scope="col" colspan="3">ACTION</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <!-- php retrive coode -->
+           <?php 
+  
+   // create connection
+  $sql = "SELECT * FROM `users` ORDER BY `id` DESC ";
+  $stmt =  $conn->prepare($sql);
+  $stmt->execute();
+      if( is_object($stmt) && $stmt->rowCount() > 0){
+           
+             
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $sno =1;
+            // echo '<pre>';
+             foreach ($result as $data) {
+               // print_r($data['name']);die;
+              ?>
+                    <tr>
+                          <td><?= $sno++; ?> </td>
+                          <td><?= $data['name']; ?></td>
+                          <td><?= $data['email']; ?></td>
+                          <td><?= $data['dept']; ?></td>
+                          <td><?= $data['role']; ?></td>
+                          <td>
+                            <a href="edit-user.php?id=<?= $data['id'];?>">edit</a>|
+                            <a href="dashboard.php?id=<?= $data['id'];?>">delete</a>
+                          </td>
+                        </tr>
+              <?php
+             }
+             
+       } else {
+            echo '<tr>
+                      <td colspan="6" class="text-center text-danger text-capitalize"> no users found</td>
+                   </tr>';
+
+       }
+  
+   ?>
+    <!-- php retrive code -->
+  </tbody>
+      
+</table> 
+<!-- table end -->
+
+
+  </div>  <!-- containser end -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

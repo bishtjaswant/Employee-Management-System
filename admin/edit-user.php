@@ -1,9 +1,10 @@
-<?php include '../authentication/auth.php';  ?>
+<?php include '../authentication/auth.php';
+require_once '../config/db.php';  ?>
 
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+    <!--  Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -11,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
     <!-- material bootstrap -->
     <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
-    <title>employee management system</title>
+    <title>employee management system (edit  user)</title>
   </head>
   <body>
 
@@ -34,7 +35,7 @@
     <?php if (isset($_SESSION['message'])): ?>
               <div class="alert-success alert text-capitalize"> <?= $_SESSION['message']; unset($_SESSION['message'] );  ?>  </div>
     <?php endif; ?>
-    <legend>Register For EMS</legend>
+    <legend>Edit</legend>
  
     <div class="form-group">
       <label for="name">Your name</label>
@@ -104,7 +105,7 @@
        </div>
     </div>
     <button type="reset" class="btn btn-danger">Cancel</button>
-    <button type="submit" class="btn btn-primary" name="register"> Register Now</button>
+    <button type="submit" class="btn btn-primary" name="register"> Update Now</button>
   </fieldset>
 </form>  <!-- end register form -->
  </div> 
