@@ -27,6 +27,8 @@ if ( isset($_REQUEST['login'])) {
       	  
       	  if (password_verify($password, $db_user_credentials['password'])) {
       	  	// print_r($db_user_credentials);
+            // create a session id to auth the usert
+            $_SESSION['user_auth'] = session_id();
              // check for admin or user
             if ($db_user_credentials['role']==='admin') {
               header("Location:  http://localhost/EMS/admin/dashboard.php");
