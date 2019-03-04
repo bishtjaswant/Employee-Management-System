@@ -22,7 +22,7 @@ require_once '../config/db.php'; ?>
     <div class="container">
       <!-- register form start -->
       <div class="col-md-10 ">
-        <form method="post" action="./insert.php" onsubmit="return validateForm();">
+        <form method="post" action="./insert-task.php" onsubmit="return validateForm();">
           <fieldset>
             <?php if (isset($_SESSION['message'])): ?>
             <div class="alert-success alert text-capitalize"> <?= $_SESSION['message']; unset($_SESSION['message'] );  ?>  </div>
@@ -30,7 +30,7 @@ require_once '../config/db.php'; ?>
             <h1>Assigning task to employee</h1>
             
             <div class="row" style="margin-top: 29px;">
-              <div class="col-md-4" style="background-color: #CFDEF3;padding: 25px;">
+              <div class="col-md-4" style="background-color: #CFDEF3;padding: 25px;overflow: scroll;">
                 <fieldset class="form-group">
                   <legend>Employee Lists</legend>
                   
@@ -63,13 +63,14 @@ require_once '../config/db.php'; ?>
 
 
      ?>
-
-                 
+     
+<!-- currently_logged_user_id -->
+                 <input type="hidden" name="currently_logged_user_id" value="<?=  $_SESSION['currently_logged_user_id'] ; ?>">
                    
                  
                 </fieldset>
               </div>
-              <div class="col-md-6" style="background-color: #C4E0E5;padding: 25px;">
+              <div class="col-md-8" style="background-color: #C4E0E5;padding: 25px;">
                 <div class="form-group">
                   <textarea rows="5" style="resize: none;" class="form-control" id="message" name="message" placeholder=" write some Message/Task"></textarea>
                 </div>
@@ -78,7 +79,7 @@ require_once '../config/db.php'; ?>
             
             
             
-            <button type="submit" class="btn btn-primary" name="register"> Task </button>
+            <button type="submit" style="margin-top: 25px;" class="btn btn-primary" name="task"> Task </button>
           </fieldset>
           </form>  <!-- end register form -->
         </div>
