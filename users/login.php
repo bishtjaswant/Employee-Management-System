@@ -8,7 +8,6 @@ require_once '../config/db.php';
 // echo password_hash("rajni123456", PASSWORD_DEFAULT);die;
 // logiin query
 if ( isset($_REQUEST['login'])) { 
-
 	   $email = htmlspecialchars(strip_tags( $_POST['email']));
     $password = htmlspecialchars(strip_tags( $_POST['password']))  ;
 
